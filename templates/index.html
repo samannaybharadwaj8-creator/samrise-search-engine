@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SAMRISE // Search Indexer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div class="scanlines"></div>
+<div class="shell">
+  <aside class="sidebar">
+    <a class="brand" href="#home"><span class="brand-mark">B<span>///</span></span><span>SAMRISE<small>SEARCH ENGINE SYSTEMS</small></span></a>
+    <div class="side-label">YOUR WORKSPACE</div>
+    <a class="nav active" href="#home"><span>⌂</span> Briefing</a>
+    <a class="nav" href="#search-panel"><span>⌕</span> Search terminal</a>
+    <a class="nav" href="#about"><span>▣</span> About the system</a>
+    <a class="nav" href="#documents"><span>▤</span> Document archive</a>
+    <a class="nav" href="#index-view"><span>⌘</span> Inverted index</a>
+    <a class="nav" href="#process"><span>⌁</span> Operations flow</a>
+    <div class="side-bottom">
+      <div class="system-card"><i></i><div><b>SAMRISE IS ONLINE</b><small>Local index engine active</small></div></div>
+      <div class="side-foot">GOLD BUILD <span>v1.0.0</span></div>
+    </div>
+  </aside>
+
+  <main class="main" id="home">
+    <header class="topbar">
+      <div class="crumb">SAMRISE <span>/</span> SEARCH SYSTEM OVERVIEW</div>
+      <div class="top-right"><span class="live-dot"></span> SEARCH SYSTEM ONLINE <span class="avatar">BS</span></div>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> A SMARTER WAY TO FIND INFORMATION</div>
+        <div class="classification">GOLD EDITION <b>•</b> SEARCH INDEXER</div>
+        <h1>SEARCH SMARTER.<br><em>FIND FASTER.</em></h1>
+        <p class="hero-intro">A search engine starts with an index. SAMRISE transforms raw text into a structured map of searchable information — then retrieves the documents that matter.</p>
+        <div class="hero-actions"><a class="hero-link" href="#search-panel">START EXPLORING <b>↘</b></a><a class="text-link" href="#about">DISCOVER SAMRISE</a></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="radar radar-a"></div><div class="radar radar-b"></div><div class="crosshair">+</div>
+        <div class="target-ring"><div class="target-core"><span>BS</span><small>INDEX CORE</small></div></div>
+        <div class="coord coord-a">KNOWLEDGE / INDEX / RETRIEVE</div><div class="coord coord-b">SYSTEM STATUS / READY</div>
+        <div class="hud-box hud-one">DOC <b>04</b><small>IN LIBRARY</small></div>
+        <div class="hud-box hud-two">TERM <b>AI</b><small>INDEXED</small></div>
+        <div class="hud-box hud-three">QUERY <b>LIVE</b><small>READY TO SEARCH</small></div>
+        <div class="art-caption">ADD DOCUMENTS <i>→</i> BUILD INDEX <i>→</i> SEARCH</div>
+      </div>
+    </section>
+
+    <section class="section about-section" id="about">
+      <div class="section-head"><div><div class="eyebrow">00 / SYSTEM BRIEFING</div><h2>What is a search engine indexer<span>?</span></h2></div><span class="micro-tag">MISSION OVERVIEW</span></div>
+      <div class="about-grid">
+        <div class="about-lead"><p>A <strong>search engine indexer</strong> is the component that organizes information so it can be found quickly. It reads documents, breaks their text into terms, and builds an <strong>inverted index</strong> — a lookup structure that connects each word to the documents where it appears.</p><p>When someone searches, the system checks the index instead of scanning every document from scratch. That makes information retrieval faster and more organized.</p></div>
+        <div class="brief-facts">
+          <div><span>PRIMARY OBJECTIVE</span><b>Organize text for fast retrieval</b></div>
+          <div><span>CORE DATA STRUCTURE</span><b>Inverted index</b></div>
+          <div><span>THIS DEMO</span><b>Manual documents · No web crawling</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="metrics">
+      <div class="metric"><span>DOCUMENTS INDEXED</span><strong id="stat-docs">—</strong><small><i></i> Current archive</small></div>
+      <div class="metric"><span>UNIQUE TERMS</span><strong id="stat-terms">—</strong><small>Vocabulary detected</small></div>
+      <div class="metric"><span>INDEX POSTINGS</span><strong id="stat-postings">—</strong><small>Term-to-document links</small></div>
+      <div class="metric"><span>AVG. WORDS / DOC</span><strong id="stat-avg">—</strong><small>After tokenization</small></div>
+    </section>
+
+    <section class="section search-section" id="search-panel">
+      <div class="section-head"><div><div class="eyebrow">01 / LIVE OPERATIONS</div><h2>Search terminal<span>.</span></h2></div><span class="micro-tag">QUERY INTERFACE</span></div>
+      <div class="searchbox"><span class="search-icon">⌕</span><input id="searchInput" placeholder="ENTER SEARCH TERMS — e.g. python, indexer, artificial intelligence..." autocomplete="off"><kbd>ENTER ↵</kbd><button id="searchBtn">EXECUTE <b>↗</b></button></div>
+      <div class="query-meta" id="queryMeta">Awaiting search input. Search across the indexed document archive.</div>
+      <div id="results" class="results"></div>
+    </section>
+
+    <section class="section split" id="documents">
+      <div>
+        <div class="section-head"><div><div class="eyebrow">02 / YOUR DOCUMENTS</div><h2>Document library<span>.</span></h2></div><span class="micro-tag" id="docCount">0 DOCS</span></div>
+        <div id="docList" class="doc-list"></div>
+      </div>
+      <div class="add-panel">
+        <div class="eyebrow">GROW YOUR KNOWLEDGE BASE</div><h3>Upload a document<span>.</span></h3>
+        <p>Add a title, category and text. The indexer processes the content and updates its inverted index automatically.</p>
+        <label>DOCUMENT TITLE</label><input id="docTitle" placeholder="e.g. Intro to Data Structures">
+        <label>DOCUMENT CATEGORY</label><input id="docCategory" placeholder="e.g. Computer Science">
+        <label>DOCUMENT CONTENT</label><textarea id="docContent" rows="5" placeholder="Enter or paste the text to be indexed..."></textarea>
+        <button class="add-btn" id="addBtn">INGEST & INDEX DOCUMENT <b>＋</b></button>
+        <div class="form-note" id="formNote">TEXT INPUT ONLY · PRIVATE DOCUMENT INDEXING</div>
+      </div>
+    </section>
+
+    <section class="section index-section" id="index-view">
+      <div class="section-head"><div><div class="eyebrow">03 / DATA INTELLIGENCE</div><h2>Inverted index<span>.</span></h2></div><span class="micro-tag">TERM → DOC IDs</span></div>
+      <p class="section-desc">Each term points directly to the documents containing it. This lookup structure is the heart of the indexer.</p>
+      <div class="index-table-wrap"><table><thead><tr><th>TERM</th><th>DOCUMENT IDs</th><th>DOCUMENT FREQUENCY</th><th>STATUS</th></tr></thead><tbody id="indexBody"></tbody></table></div>
+    </section>
+
+    <section class="section process-section" id="process">
+      <div class="section-head"><div><div class="eyebrow">04 / THE PROCESS</div><h2>How the system operates<span>.</span></h2></div><span class="micro-tag">5-STEP PIPELINE</span></div>
+      <div class="pipeline">
+        <div class="pipe-step"><span>01</span><b>INGEST</b><p>Collect text documents and assign IDs.</p></div><div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span>02</span><b>TOKENIZE</b><p>Split text into individual word tokens.</p></div><div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span>03</span><b>NORMALIZE</b><p>Lowercase, clean punctuation, remove stop words.</p></div><div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span>04</span><b>INDEX</b><p>Map each term to matching document IDs.</p></div><div class="pipe-arrow">→</div>
+        <div class="pipe-step"><span>05</span><b>RETRIEVE</b><p>Match query terms and rank relevant documents.</p></div>
+      </div>
+    </section>
+    <footer><span>SAMRISE <b>SEARCH ENGINE SYSTEMS</b></span><span>INDEXING PLATFORM <i>///</i></span></footer>
+  </main>
+</div>
+<div class="toast" id="toast"></div>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
